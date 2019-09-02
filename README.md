@@ -9,8 +9,26 @@
 sudo apt-get install openssl
 sudo apt-get install libssl-dev
 ```
+2. configure server url
+```shell
+# Edit ${SARAH_ROOT}/include/sarah.h
 
-2. install debug sarah
+/** http api url constants define */
+#define updater_version_url "http://sarah.grandhelmsman.com/sdk/linux/download/version"
+#define updater_download_url "http://sarah.grandhelmsman.com/sdk/linux/download/bin"
+#define executor_sync_url "http://sarah.grandhelmsman.com/api/node/command/export/notify"
+#define executor_pull_url "http://sarah.grandhelmsman.com/api/node/command/export/pull"
+#define collector_post_url "http://sarah.grandhelmsman.com/api/collector/post"
+
+// lua executor interface define
+/* LUA package path base directory */
+#define APRIL_PACKAGE_BASE_URL	"http://lib.grandhelmsman.com/"
+#define APP_MIRROR_BASE_URL 	"http://mirrors.grandhelmsman.com/"
+#define APRIL_PACKAGE_BASE_DIR 	"/usr/local/lib/april/"
+#define SARAH_LIB_BASE_DIR 		"/usr/local/lib/"
+```
+
+3. install debug sarah
 ```shell
 cd ${SARAH_ROOT}
 make debug
@@ -18,7 +36,7 @@ cd ./build/debug/
 sudo ./install.sh
 ```
 
-3. install release sarah
+4. install release sarah
 ```shell
 cd ${SARAH_ROOT}
 make release
