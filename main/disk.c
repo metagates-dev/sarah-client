@@ -536,7 +536,7 @@ start=%ld, blocks=%lld, size=%lld\n",
  * do the partition for the specified disk
  *  with the specified partitions define.
  *	this function implemented by shell script
- * @author Rock
+ *
  * @param   disk
  * @param   partitions
  * @param   part_num
@@ -652,7 +652,7 @@ failed:
 
 /**
  * make partition format by shell
- * @author Rock
+ *
  * @param disk
  * @return
  */

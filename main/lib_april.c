@@ -389,7 +389,7 @@ static int lua_http_download(lua_State *L)
 /**
  * quick interface to get the content of a specified fil
  * string, boolean file_get_contents(string file_path)
- * @author Rock
+ *
 */
 static int lua_file_get_contents(lua_State *L)
 {
@@ -532,7 +532,7 @@ failed:
 /**
  * quick interface to check if the file is exists
  * boolean file_exists(string file_path)
- * @author Rock
+ *
  *
 */
 static int lua_file_exists(lua_State *L)
