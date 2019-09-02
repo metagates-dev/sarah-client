@@ -200,7 +200,7 @@ p5: p4[1] == 1 ? mac_addr[6] : random short + random integer
     "system": {     // system information
         "pre_def": "Linux",     // self predefined system name
         "sys_name": "Linux",    // system name, like, Linux, Windows
-        "node_name": "xjxh-PowerEdge-T110-II",  // node name, the hostname of the system
+        "node_name": "grandhelmsman-PowerEdge-T110-II",  // node name, the hostname of the system
         "release": "4.15.0-39-generic",         // kernel release version
         "version": "#42-Ubuntu SMP Tue Oct 23 15:48:01 UTC 2018",   // release version
         "machine": "x86_64"     // machine serial
