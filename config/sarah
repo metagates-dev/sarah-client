@@ -1,0 +1,88 @@
+#! /bin/sh
+# sarah collector client /etc/init.d/ system auto start script
+# 
+# @Author grandhelmsman<desupport@grandhelmsman.com>
+
+### BEGIN INIT INFO
+# Provides:          sarah
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start daemon at boot time
+# Description:       Enable service provided by daemon.
+### END INIT INFO
+
+# set -e
+# get_booter_pid() {
+#     return `ps -ef|grep sarah-booter|grep -v grep|awk '{print $2}'`
+# }
+get_booter_pid() {
+    booter_pid=0
+    if [ -f /etc/sarah/sarah.pid ]; then
+        booter_pid=`cat /etc/sarah/sarah.pid`
+    fi
+
+    if [ $booter_pid = 0 ] || [ $booter_pid -ne 0 ]; then
+        booter_pid=`ps -ef|grep sarah-booter|grep -v grep|awk '{print $2}'`
+    fi
+
+    return $booter_pid
+}
+
+
+start() {
+    get_booter_pid
+    booter_pid=$?
+    # echo $booter_pid
+    if [ -n "$booter_pid" ] && [ $booter_pid -ne 0 ]; then
+        echo "[Warning]: sarah-booter is already running with pid=$booter_pid"
+    else
+        /usr/local/bin/sarah-booter -d /etc/sarah/ > /dev/null &
+        echo "sarah-booter started"
+    fi
+}
+
+
+stop() {
+    get_booter_pid
+    booter_pid=$?
+    if [ -n "$booter_pid" ] && [ $booter_pid -ne 0 ]; then
+        kill $booter_pid
+        echo "sarah-booter stoped"
+    else
+        echo "sarah-booter is not running"
+    fi
+}
+
+restart() {
+    get_booter_pid
+    booter_pid=$?
+    if [ -n "$booter_pid" ] && [ $booter_pid -ne 0 ]; then
+        kill -s 10 $booter_pid
+        echo "sarah-booter restarted"
+    else
+        start
+    fi
+}
+
+case "$1" in
+    start)
+        start
+    ;;
+
+    stop)
+        stop
+    ;;
+
+    restart)
+        restart
+    ;;
+
+    *)
+        echo "Usage: $0 {start|stop|restart}" >&2
+        exit 3
+    ;;
+esac
+exit 0
+

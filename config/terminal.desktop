@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=poc miner
+Comment=BHD Miner
+Exec=gnome-terminal --maximize 'bash -c "cd /opt/PocMiner-linux64/; ./poc-miner; exec bash"'
+Icon=/opt/idea.png
+Terminal=false
+StartupNotify=false
+Type=Application
+X-GNOME-Autostart-enabled=true
+Categories=Application;

@@ -1,0 +1,12 @@
+# sarah client configuration JSON file
+# please download the SDK from sarah official home page
+# please get the app_key from sarah OS if it is not setted
+{
+    "build" : "{build}",
+    "app_key" : "{sarahos_app_key}",
+
+    "disk_auto_partition": "false",
+    "disk_mount_basedir": "/data",
+    "disk_mount_prefix": "sarah_",
+    "disk_mount_algorithm": "wwn"
+}
